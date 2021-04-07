@@ -1,23 +1,37 @@
-import React from "react"
+import React, { useState } from "react"
 import {Card, Form, Col} from "react-bootstrap"
 
 const AddForm=()=>{
+    const initialFriend={
+        Name:"",
+        Email:"",
+        monthOfBirth:"",
+        dayOfBirth:"",
+    }
+    const [friend, setFriend]= useState(initialFriend)
+
+    const handleChange=(event)=>{
+        setFriend({...friend, [event.target.name]: event.target.value})
+        console.log(friend)
+    }
+
+
     return(
         <Card>
             <Card.Body>
         <Form>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
-                <Form.Control  placeholder="Enter your friend's name" name="Name" type="" />
+                <Form.Control  placeholder="Enter your friend's name" name="Name" type="text" onChange={handleChange}/>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Email</Form.Label>
-                <Form.Control  placeholder="Enter your friend's email address" name="Email" type="" />
+                <Form.Control  placeholder="Enter your friend's email address" name="Email" type="text" onChange={handleChange} />
             </Form.Group>
             <Form.Row>
             <Form.Group as={Col}>
                 <Form.Label>Month of Birth</Form.Label>
-                <Form.Control as="select">
+                <Form.Control as="select" onChange={handleChange} name="monthOfBirth">
                     <option>January</option>
                     <option>February</option>
                     <option>March</option> 
@@ -35,7 +49,7 @@ const AddForm=()=>{
             </Form.Group>
             <Form.Group as={Col}>
                 <Form.Label>Day of Birth</Form.Label>
-                <Form.Control  placeholder="Enter your friend's day of birth e.g 19" name="Day of Birth" type="" />
+                <Form.Control  placeholder="Enter your friend's day of birth e.g 19" name="dayOfBirth" type="number" onChange={handleChange}/>
             </Form.Group>
             </Form.Row>
             
