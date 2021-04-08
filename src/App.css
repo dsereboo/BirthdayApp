@@ -1,5 +1,18 @@
-.container{
+
+.custom.container{
   padding-top: 6rem;
   padding-right: 8rem;
   padding-left: 8rem;
 }
+
+
+.special.form-control{
+  border-radius: 20rem;
+  margin-bottom: 1.1rem;
+}
+
+
+.btn.btn-primary.btn-block.btn-md{
+    border-radius: 20rem;;
+}
+

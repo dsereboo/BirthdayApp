@@ -1,13 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container } from "react-bootstrap"
 import './App.css';
-import AddForm from './Components/AddForm';
+import TopBar from './Components/TopBar';
 
 function App() {
   return (
-    <Container>
-       <AddForm/>
-    </Container>
+       <TopBar/>
    
   );
 }
