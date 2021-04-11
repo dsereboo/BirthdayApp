@@ -13,7 +13,6 @@ const AddForm=()=>{
 
     const handleChange=(event)=>{
         setFriend({...friend, [event.target.name]: event.target.value})
-        console.log(friend)
     }
 
     const handleSubmit=(event)=>{
@@ -32,6 +31,7 @@ const AddForm=()=>{
 
     return(
         <Container className="custom">
+        <Col md={{offset:3, span:5,}}>    
         <Card>
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
@@ -71,6 +71,7 @@ const AddForm=()=>{
                 </Form>
             </Card.Body>
         </Card>
+        </Col>
         </Container>    
     )
 }
