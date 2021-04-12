@@ -4,20 +4,19 @@ import {Link} from "react-router-dom"
 import {Form, Button, Row, Col, Container} from "react-bootstrap"
 
 const MainPage =()=>{
-    const initialState= {Name: "Acquah-Denstil", Email: "cad@gmail.com", monthOfBirth: "May", dayOfBirth: "1"}
     const[query, setQuery]= useState("")
     const[queryResults, setQueryResults]=useState([])
-    const[currentBdays, setCurrentBdays]=useState([initialState])
+    const[currentBdays, setCurrentBdays]=useState([])
 
-    /*useEffect(
+    useEffect(
         ()=>{
             var DayDate= new Date()
             //Returns current month in full text 
             var Month=new Intl.DateTimeFormat('en-US', {month:"long"}).format(DayDate)
             axios.get(`https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb/monthOfBirth/*${Month}*`)
-            .then(response=>{console.log(response)})
-        }
-    ) */    
+            .then(response=>{setCurrentBdays(response.data)})
+        },[]
+    )    
 
     const handleChange=(event)=>{
         setQuery(event.target.value)
@@ -63,7 +62,7 @@ const MainPage =()=>{
                     
                         <Button>This Month</Button>
                         <Button onClick={handleClick}>Next Month</Button>
-                        <Button>All Months</Button>
+                        <Button variant="primary custom">All Months</Button>
                        
                        
                    </Col>
