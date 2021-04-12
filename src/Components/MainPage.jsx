@@ -4,30 +4,32 @@ import {Link} from "react-router-dom"
 import {Form, Button, Row, Col, Container} from "react-bootstrap"
 
 const MainPage =()=>{
+    const initialState= {Name: "Acquah-Denstil", Email: "cad@gmail.com", monthOfBirth: "May", dayOfBirth: "1"}
     const[query, setQuery]= useState("")
+    const[queryResults, setQueryResults]=useState([])
+    const[currentBdays, setCurrentBdays]=useState([initialState])
 
     /*useEffect(
         ()=>{
             var DayDate= new Date()
             //Returns current month in full text 
             var Month=new Intl.DateTimeFormat('en-US', {month:"long"}).format(DayDate)
-            axios.get(`https://sheet.best/api/sheets/566ada79-9156-4425-a5f2-f9054003de35/monthOfBirth/*${Month}*`)
+            axios.get(`https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb/monthOfBirth/*${Month}*`)
             .then(response=>{console.log(response)})
         }
     ) */    
 
     const handleChange=(event)=>{
         setQuery(event.target.value)
-        console.log(query)
     }
 
     const handleSubmit=(event)=>{
         event.preventDefault()
         console.log("clicked")
-        axios.get(`https://sheet.best/api/sheets/566ada79-9156-4425-a5f2-f9054003de35/Name/*${query}*`)
+        axios.get(`https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb/Name/*${query}*`)
         .then(
             response=>{
-                console.log(response)
+                setQueryResults(response.data)
             }
         )
     }
@@ -42,8 +44,11 @@ const MainPage =()=>{
 
     const handleClick=()=>{
        let month=getNextMonth()
-       axios.get(`https://sheet.best/api/sheets/566ada79-9156-4425-a5f2-f9054003de35/monthOfBirth/*${month}*`)
-       .then(response=>{console.log(response)})
+       axios.get(`https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb/monthOfBirth/*${month}*`)
+       .then(response=>{
+           setCurrentBdays(response.data)
+        })
+
     }
 
     return(
@@ -71,7 +76,26 @@ const MainPage =()=>{
                            </Form.Group>
                        </Form>
                        </Col>
+                       <h1>Search results</h1>
+                       {queryResults.map(
+                           result=>(
+                               <div>
+                                <h1>{result.Name}</h1>
+                                <p>{result.Email}</p>
+                               </div>
+                               
+                           )
+                       )}
                        <h1>Birthdays this Month</h1>
+                       {currentBdays.map(
+                           person=>(
+                               <div>
+                                   <h1>{person.dayOfBirth}</h1>
+                                    <p>{person.Name}</p>
+                                    <p>{person.Email}</p>
+                               </div>
+                           )
+                       )}
                    </Col>
                </Row>
            </Container>

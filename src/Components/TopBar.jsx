@@ -9,7 +9,6 @@ const TopBar=()=>{
         <BrowserRouter>
         <Navbar bg="light" expand="lg" className="sticky-top">
             <Link to="/"><Navbar.Brand href="#home">Birthday App</Navbar.Brand></Link>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </Navbar>
 
         <Route exact path="/" component={MainPage}/>

@@ -19,7 +19,7 @@ const AddForm=()=>{
             event.preventDefault()
             console.log("Form submitted")
             //Add axois post operation here
-            axios.post("https://sheet.best/api/sheets/566ada79-9156-4425-a5f2-f9054003de35", friend)
+            axios.post("https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb", friend)
             .then(
                 response=>{
                     console.log(response)
@@ -31,7 +31,6 @@ const AddForm=()=>{
 
     return(
         <Container className="custom">
-        <Col md={{offset:3, span:5,}}>    
         <Card>
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
@@ -71,7 +70,6 @@ const AddForm=()=>{
                 </Form>
             </Card.Body>
         </Card>
-        </Col>
         </Container>    
     )
 }
