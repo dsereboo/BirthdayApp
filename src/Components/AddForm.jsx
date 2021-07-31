@@ -18,7 +18,6 @@ const AddForm=()=>{
     const handleSubmit=(event)=>{
             event.preventDefault()
             console.log("Form submitted")
-            //Add axois post operation here
             axios.post("https://sheet.best/api/sheets/7cf28ec6-9e9d-4ab6-bb87-7067faffe0bb", friend)
             .then(
                 response=>{
